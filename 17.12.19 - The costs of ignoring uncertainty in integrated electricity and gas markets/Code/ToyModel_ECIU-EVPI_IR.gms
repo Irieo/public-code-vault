@@ -1,3 +1,16 @@
+$ontext
+
+Code for the presentation: ‘The costs of ignoring uncertainty: an illustrative toy model”, Doctoral seminar of the Institute of Electrical and Thermal Energy Systems 
+BTU C-S, 17.12.2019. 
+Iegor Riepin
+
+This code is published under the MIT license (https://choosealicense.com/licenses/mit/)
+
+Feedback, bug reportings and suggestions are highly welcome: iegor.riepin@b-tu.de
+
+$offtext
+
+
 set s scenarios /s1,s2/;
 
 parameters
