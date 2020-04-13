@@ -4,8 +4,6 @@ Code for the presentation: ‘The costs of ignoring uncertainty: an illustrative
 BTU C-S, 17.12.2019. 
 Iegor Riepin
 
-This code is published under the MIT license (https://choosealicense.com/licenses/mit/)
-
 Feedback, bug reportings and suggestions are highly welcome: iegor.riepin@b-tu.de
 
 $offtext

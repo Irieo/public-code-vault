@@ -1,4 +1,22 @@
-* 6 node system
+$ontext
+
+The code for the presentation "Robust optimization of electricity system expansion" 
+BTU C-S, 30.10.2019. 
+Iegor Riepin
+
+A 6-node power system and RO math I am using here is based on a great book:
+Conejo, A. J., Baringo, M. L., Kazempour, S. J., & Siddiqui, A. S. (2016). 
+Investment in Electricity Generation and Transmission: Decision Making under Uncertainty.
+DOI: 10.1007/978-3-319-29501-5
+
+The formulation of a column-and-constraint generation (or Berders-primal) algorithm is based on 
+multiple sources. To my knowledge, there are no publicly available GAMS formulations of this monster,
+thus I hope my implementation might be of use.
+
+Feedback, bug reportings and suggestions are highly welcome: iegor.riepin@b-tu.de
+
+$offtext
+
 SETS
   n / n1 * n6 /
   g / g1 * g5 /
@@ -14,6 +32,9 @@ SETS
 
   v iterations /v1 * v20/
   vv(v) iterations subset
+
+  i dsens /i1*i5/
+  j pesens /j1*j5/
   ;
 
 TABLE LDATA (L ,*)
@@ -30,10 +51,10 @@ l9       500 150   700000;
 
 TABLE DDATA (d ,*)
    PDmin PDmax LScost
-d1 180   220   40
-d2 135   165   52
-d3 90    110   55
-d4 180   220   65;
+d1 180   220   140
+d2 135   165   152
+d3 90    110   155
+d4 180   220   165;
 
 TABLE GDATA (g ,*)
    PEmin PEmax Gcost
@@ -46,9 +67,9 @@ g5 0     150   35;
 SCALARS
 ILmax     /3000000/
 SIGMA     /8760/
-M         /500000/
-GAMMA_D   /0.8/
-GAMMA_G   /0.8/
+M         /5000000/
+GAMMA_D   /0/
+GAMMA_G   /0/
 ;
 
 
@@ -386,15 +407,28 @@ ARO_LVL23.OptFile = 1;
 *execute_unload "SUB_results.gdx";
 
 parameter
-x_ithist(l,v);
+x_ithist(l,v)
+report(j,i,*,*)
+;
 
-* parameter initialization
-vv(v)      = no;
+GAMMA_D = 0;
+
+loop(j,
+
+GAMMA_D = 0;
+vv(v)   = no;
 Pdem_fixed(d,vv) = DDATA(d, "PDmin");
 PE_fixed(g,vv)   = GDATA(g, "PEmax");
+Z_Lower = -inf;
+Z_Upper = inf;
 
+loop(i,
 
-
+vv(v)   = no;
+Pdem_fixed(d,vv) = DDATA(d, "PDmin");
+PE_fixed(g,vv)   = GDATA(g, "PEmax");
+Z_Lower = -inf;
+Z_Upper = inf;
 
 loop (v $((abs(1-Z_Lower/Z_Upper) > Tol)),
 
@@ -407,7 +441,7 @@ loop (v $((abs(1-Z_Lower/Z_Upper) > Tol)),
   Z_Lower = SUM(l$pros(l), LDATA(l,"IC")*x_m.l(l)) + ETA.l;
   X(l) = x_m.l(l);
 
-  execute_unload "MASTER_results_check.gdx";
+*  execute_unload "MASTER_results_check.gdx";
 
 
   SOLVE ARO_LVL23 USING MIP MAXIMIZING Z;
@@ -418,8 +452,24 @@ loop (v $((abs(1-Z_Lower/Z_Upper) > Tol)),
   PE_fixed(g,vv)$(vv.last) = PE.l(g);
   x_ithist(l,vv)$(vv.last) = x_m.l(l);
 
-  execute_unload "SUB_results_check.gdx";
-
+*  execute_unload "SUB_results_check.gdx";
   );
 
-execute_unload "ARO_DEC_results.gdx"
+  report(j,i,'X(l)',l)   =X(l);
+  report(j,i,'G_D','')   =GAMMA_D;
+
+  GAMMA_D=GAMMA_D+0.2;
+);
+
+  report(j,i,'X(l)',l)   =X(l);
+  report(j,i,'G_G','')   =GAMMA_G;
+
+
+put_utility 'gdxout' / 'J-steps' j.tl:0;
+execute_unload GAMMA_D, GAMMA_G, report;
+
+  GAMMA_G=GAMMA_G+0.2;
+);
+
+execute_unload "ARO_SENS_results.gdx" report;
+
