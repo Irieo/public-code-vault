@@ -1,0 +1,5 @@
+ScaInd -1
+LPMethod 1
+PreInd 0
+EpOpt 1e-9
+EpRHS 1e-9
