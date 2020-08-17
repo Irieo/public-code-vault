@@ -457,12 +457,10 @@ loop (v $((abs(1-Z_Lower/Z_Upper) > Tol)),
 
   report(j,i,'X(l)',l)   =X(l);
   report(j,i,'G_D','')   =GAMMA_D;
+  report(j,i,'G_G','')   =GAMMA_G;
 
   GAMMA_D=GAMMA_D+0.2;
 );
-
-  report(j,i,'X(l)',l)   =X(l);
-  report(j,i,'G_G','')   =GAMMA_G;
 
 
 put_utility 'gdxout' / 'J-steps' j.tl:0;
