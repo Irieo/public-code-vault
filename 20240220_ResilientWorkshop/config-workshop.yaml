@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2017-2023 The PyPSA-Eur Authors
+#
+# SPDX-License-Identifier: CC0-1.0
+
+run:
+  name: "example-workshop"
+  disable_progressbar: true
+  shared_resources: false
+  shared_cutouts: true
+
+scenario:
+  simpl:
+  - ''
+  ll:
+  - vopt
+  clusters:
+  - 1
+  opts:
+  - '3H'
+  sector_opts:
+  - ''
+  planning_horizons:
+  - 2030
+
+countries: ['DE']
+
+enable:
+  retrieve: true
+  retrieve_databundle: true
+  retrieve_sector_databundle: false
+  retrieve_cost_data: true
+  retrieve_cutout: true
+
+
+##########################
+DE_NECP:
+  switcher: false
+  RES_share: 80 # percent points of national electricity consumption
+
+no_coal_policy: False
