@@ -1,2 +1,3 @@
 # Public talks
- Placeholder for some of my public talks given from end 2019 onwards - presentation slides, source codes and data.
+ Placeholder for shareable files (slides, source codes and data) related to selected workshops or public talks.
+ NB PDFs/codes for all my talks can be found here [https://iriepin.com/](https://iriepin.com/), this repository is not updated regularly.
