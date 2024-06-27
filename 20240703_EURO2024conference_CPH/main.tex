@@ -1,0 +1,260 @@
+% !TeX root = main.tex
+
+\input{backmatter.tex}
+
+\title{Three Pillars of Hourly Matching: \\ A Tour From Model Land to Real World}
+
+%\subtitle{---}
+\author{
+  Elisabeth Zeyen \& Iegor Riepin\\
+  \hrefc{mailto:e.zeyen@tu-berlin.de}{e.zeyen@tu-berlin.de} $\vert\vert$ 
+  \hrefc{mailto:iegor.riepin@tu-berlin.de}{iegor.riepin@tu-berlin.de} \\
+  Technical University of Berlin
+  }
+
+\date{EURO2024, Hydrogen and Electricity Modeling and Regulation\\ 
+      03 July 2024 \\
+
+}
+
+\titlegraphic{%
+  \vspace{0cm}
+  \hspace{10.7cm}
+    \includegraphics[trim=0 0cm 0 0cm,height=1.2cm,clip=true]{images/TUB.png}
+  \vspace{5.5cm}
+  }
+
+  
+\begin{document}
+
+\maketitle
+
+%%%% 
+
+
+\begin{frame}{Setting the scene}
+  
+  \begin{itemize}
+    \item Voluntary 24/7 CFE procurement in electricity, Delegated act for H2 Regulation
+    \item Both focus on the \enquote{Three Pillars} -- set of rules on temporal, spatial and additionality aspects of matching demand and clean power supply
+    \item Today we go through the \alert{three pillars} and discuss: \\
+    -- how the pillars are implemented in the real world \\
+    -- how the pillars are implemented in mathematical models \\
+    -- caveats and challenges of model implementations \\
+    -- impact of model setups on results and policy recommendations \\
+  \end{itemize}
+
+  Iegor?
+  
+\end{frame}
+
+
+\begin{frame}{Temporal matching: definition}
+
+  -- maybe we show some teasing screenshot before showing this slide with math, e.g., industry figting for easier regulation.
+
+  \alert{Hourly matching} is modelled with a constraint (\ref{eqn:CFE}), 
+  which matches electricity demand for eletrolysis process with generation of renewable resources on an hourly basis. 
+
+  \vspace{0.1cm}
+  \begin{equation}
+  \sum_{r\in R} g_{r,t} + \sum_{s\in S} \left(\bar{g}_{s,t} - \ubar{g}_{s,t}\right) - ex_t = d_t
+  \label{eqn:CFE}
+  \end{equation}
+  \vspace{0.1cm}
+  
+  \noindent\fbox{%
+    \parbox{\textwidth}{%
+  Here eq. 2 from https://iopscience.iop.org/article/10.1088/1748-9326/ad2239/pdf \\
+  -- maybe here we say along the lines that the main fight in the Delegated Act was for this equation. \\
+  -- explain the equation\\ 
+  -- Now, what are the hidden issues? let's talk about the first point -- flexibility. \\
+  }}
+  \source{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}
+
+  Elisabeth?
+
+\end{frame}
+
+
+\begin{frame}{Temporal matching: flexibility changes everything}
+
+  figure from the paper -- how flexibility changes everything -- results and policy recommendations
+  \source{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen} \\
+  Elisabeth
+
+\end{frame}
+
+
+\begin{frame}{Temporal matching: (excess hydrogen story)}
+
+  figure from the paper -- interplay of excess and results (Hydrogen story)
+  \source{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen} \\
+  Elisabeth
+
+\end{frame}
+
+
+\begin{frame}{Temporal matching: (CFE story)}
+
+  Here, the \alert{hourly matching} constraint is extended to include electricity consumption from the regional grid:
+
+  \vspace{0.1cm}
+  \begin{equation}
+  \sum_{r\in CFE, t\in T} g_{r,t} + \sum_{s\in STO, t\in T} \left(\bar{g}_{s,t} - \ubar{g}_{s,t}\right) - \sum_{t\in T} ex_t + \textcolor{red}{\sum_{t\in T} CFE_t \cdot im_t} \geq x \cdot \sum_{t\in T} d_t
+  \label{eqn:CFE}
+  \end{equation}
+  \vspace{0.1cm}
+  \source{Riepin \& Brown (2023): https://zenodo.org/records/7180098}
+
+  \noindent\fbox{%
+    \parbox{\textwidth}{%
+    The \alert{grid CFE factor} $CFE_t$ in eq. (\ref{eqn:CFE}) defines the share of 
+    carbon-free electricity in grid imports. \\
+    -- depends how you scope out CFE calculation \\
+    -- storage tracing \\
+    -- CFE isn't a parameter but a variable \\
+  }}
+  Iegor
+
+\end{frame}
+
+
+
+\begin{frame}{Geographical matching}
+  Iegor?
+  \includegraphics[width=13cm]{images/go_leak.png}
+  \source{https://www.ffe.de/en/publications/norway-and-the-double-marketing-of-renewable-energies/}
+\end{frame}
+
+
+
+\begin{frame}{Geographical matching}
+
+  \includegraphics[width=8cm]{images/microsoft.png}
+  \source{datacenterdynamics "Microsoft signs 24/7 nuclear power deal with Constellation for Boydton data center" (June 30, 2023)}
+
+\end{frame}
+
+\begin{frame}{Geographical matching}
+
+  \includegraphics[width=13cm]{images/microsoft2.png}
+
+\end{frame}
+  
+
+\begin{frame}{Geographical matching}
+
+  Elisabeth?
+
+  European map here\\
+  explain how geographical matching is defined IRL\\
+  explain that it's relatively easy to implement in models\\
+  geographical matching is than both string and unstict, depending how you look at it\\
+  in some zones, plenty of congestions!\\
+\end{frame}
+
+
+\begin{frame}{Additionality}
+
+  Iegor starts? 
+
+  -- start with the fact that it's complex and messy both in real world and in models\\
+  -- define it (over MW and MWh)\\
+  -- as a funny reference, we can re-use the Microsoft PPA deal example with existing nuclear power.
+
+\end{frame}
+
+
+\begin{frame}{Additionality: definition challenges}
+
+  Iegor or Elisabeth?
+
+  -- additionality in the real world: RED definition, Google definition, DA definition\\
+
+\end{frame}
+
+
+\begin{frame}{Additionality: how to model a background grid 1/2?}
+
+  Iegor
+
+  \begin{columns}
+    \begin{column}{7cm}
+      \includegraphics[width=7.5cm]{images/10-2025-DE-p3-ci_emisrate.pdf}
+    \end{column}
+    \begin{column}{7cm}
+      \includegraphics[width=7.5cm]{images/ci_emisrate.pdf}
+    \end{column}
+  \end{columns}
+
+  Scenario: Germany -- 2025 -- 24/7 CFE with 10\% participation of C\&I sector -- baseload profile -- all costs from \href{https://ens.dk/en/our-services/technology-catalogues}{DEA 2025}. Left: Constrained RES expansion (the Easter Package), Right: unconstrained RES expansion.
+\end{frame}
+
+
+\begin{frame}{Additionality: how we model a background grid 2/2?}
+
+  Elisabeth
+
+  -- here: cooptimisation vs sequential optimisation, results and thoughts about all it.
+
+  -- conclude with reference to Lissy's paper on additionality
+
+\end{frame}
+
+
+\begin{frame}{Take aways (first version)}
+
+\begin{columns}
+\begin{column}{7cm}
+  \begin{enumerate}
+    \item Do not take results for granted, try to challenge everything! \\
+    \enquote{We must fight our biases to see the solutions} (Auke Hoekstra)
+    \item Talk to others in research community, share your concerns! \\
+    \enquote{A problem shared is a problem halved} (Old saying)
+  \end{enumerate}
+\end{column}
+\begin{column}{8cm}
+  \includegraphics[width=8cm]{images/alice.png}
+  \source{ChatGPT4 hallucination, 2024}
+\end{column}
+\end{columns}
+
+
+\end{frame}
+
+%----------------------------------------
+%----------------------------------------
+
+\begin{frame}\frametitle{\quad}
+
+  {\Large
+  \alert{Contacts, Resources, Acknowledgements}
+  }
+
+  \vspace{0.1cm}
+    
+  {\bf References:}
+  \hrefc{https://iopscience.iop.org/article/10.1088/1748-9326/ad2239}{Temporal regulation of renewable supply for electrolytic hydrogen (2023)}\\
+  {\bf References:} \hrefc{https://irieo.github.io/247cfe.github.io/}{More about the 24/7 CFE research project (2022-2024)}
+
+  {\bf Code:} This work done in a spirit of open and reproducible research: \\
+  \faUnlock~code:
+  \hrefc{https://github.com/PyPSA/247-cfe}{github.com/PyPSA/247-cfe} \\
+  \faUnlock~code: \hrefc{https://zenodo.org/records/8324521}{https://zenodo.org/records/8324521}
+  
+  \vspace{.1cm}
+  {\bf Copyright:} Unless otherwise stated, graphics and text are Copyright \copyright E.Z. and I.R. 2024. \\
+  This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0}.  {\footnotesize \ccby} 
+
+  \vspace{.1cm}
+  {\bf Send an email:} \\
+  Dr. Elisabeth Zeyen, e.zeyen@tu-berlin.de\\
+  Dr. Iegor Riepin, iegor.riepin@tu-berlin.de \\
+  
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
