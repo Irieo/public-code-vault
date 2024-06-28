@@ -39,8 +39,8 @@ version={4.0},
 	\vspace{0.2cm}
 	\scalebox{0.5}{\doclicenseIcon}
 	\hfill
-	\includegraphics[height=0.8cm]{images/tublogo.pdf}
-	\hspace{0.2cm}
+%	\includegraphics[height=0.8cm]{images/tublogo.pdf}
+%	\hspace{0.2cm}
 }
 
 % Disable the section title slides
@@ -52,6 +52,11 @@ myframe number]
 
 % Change alert color to black
 \setbeamercolor{alerted text}{fg=black}
+
+% SOURCES
+\setbeamercolor{framesource}{fg=gray}
+\setbeamerfont{framesource}{size=\tiny}
+
 
 % Redefine \sectionpage to only show the section name and not increment the frame counter
 \makeatletter
@@ -94,6 +99,23 @@ myframe number]
 \end{frame}
 
 \section{I Pillar - Temporal matching}
+\begin{frame}{I Pillar: Temporal matching}
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+				\includegraphics[width=0.7\linewidth]{images/h2_temporal_news4}
+				\href{https://www.hydrogeninsight.com/electrolysers/hourly-electricity-matching-is-the-only-reliable-way-to-reduce-emissions-from-green-hydrogen-study/2-1-1378431}{Hydrogeninsight, December 2022}
+				\includegraphics[width=0.7\linewidth]{images/h2_temporal_news1}
+				\href{https://www.abnamro.com/research/en/our-research/sustainaweekly-not-so-green-hydrogen-perhaps-a-necessary-evil}{Abnamro, October 2022}
+		\end{column}
+	\begin{column}{0.5\textwidth}
+		\includegraphics[width=0.7\linewidth]{images/h2_temporal_news2}
+		\href{https://www.rechargenews.com/energy-transition/proposed-stringent-eu-rules-on-green-hydrogen-would-put-the-brakes-on-development-/2-1-1223746}{Hydrogeninsight, May 2022}
+		\includegraphics[width=0.7\linewidth]{images/h2_temporal_news3}
+		\href{https://www.hydrogeninsight.com/policy/far-from-perfect-strict-rules-in-new-delegated-act-will-make-green-h2-projects-more-expensive-hydrogen-europe/2-1-1403241}{Hydrogeninsight, February 2023}
+		
+	\end{column}
+	\end{columns}
+\end{frame}
 \begin{frame}{Temporal matching: definition}
 
   -- maybe we show some teasing screenshot before showing this slide with math, e.g., industry figting for easier regulation.
@@ -123,19 +145,43 @@ myframe number]
 
 
 \begin{frame}{Temporal matching: flexibility changes everything}
-
-  figure from the paper -- how flexibility changes everything -- results and policy recommendations
-  \source{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen} \\
-  Elisabeth
+	\centering
+	\includegraphics[width=0.6\linewidth, clip, trim={0cm 5cm 0cm 5cm}]{images/store_flexibility_v2}
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+			  	\centering
+			\textbf{Emissions} \\
+  	\includegraphics[width=1\linewidth, clip, trim={5cm 4cm 5cm 4cm}]{images/emissions_flexibility}
+  	\end{column}
+\begin{column}{0.5\textwidth}
+		\centering
+	\textbf{Hydrogen production costs} \\
+	\includegraphics[width=1\linewidth, clip, trim={5cm 4cm 5cm 4cm}]{images/costs_flexibility}
+\end{column}
+\end{columns}
+	\centering
+    \alert{Flexible} operation \alert{reduces} emissions and costs, but \alert{constant} operations \alert{increase} them.
+    
+  \source{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen} 
 
 \end{frame}
 
 
-\begin{frame}{Temporal matching: (excess hydrogen story)}
+\begin{frame}{Temporal matching: higher excess sales reduce emissions}
 
-  figure from the paper -- interplay of excess and results (Hydrogen story)
-  \source{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen} \\
-  Elisabeth
+  	\begin{columns}[t]
+  	\begin{column}{0.5\textwidth}
+  		\centering
+  		\textbf{Annual} \\
+  		\includegraphics[width=1\linewidth]{images/annual_excess}
+  	\end{column}
+  	\begin{column}{0.5\textwidth}
+  		\centering
+  		\textbf{Hourly} \\
+  		\includegraphics[width=1\linewidth]{images/hourly_excess}
+  	\end{column}
+  \end{columns}
+  \source{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}
 
 \end{frame}
 
@@ -166,7 +212,7 @@ myframe number]
 
 
 \section{II Pillar - Geographical matching}
-\begin{frame}{Geographical matching}
+\begin{frame}{II Pillar - Geographical matching}
   Iegor?
   \includegraphics[width=13cm]{images/go_leak.png}
   \source{https://www.ffe.de/en/publications/norway-and-the-double-marketing-of-renewable-energies/}
@@ -189,18 +235,23 @@ myframe number]
   
 
 \begin{frame}{Geographical matching}
-
-  Elisabeth?
-
-  European map here\\
-  explain how geographical matching is defined IRL\\
-  explain that it's relatively easy to implement in models\\
-  geographical matching is than both string and unstict, depending how you look at it\\
-  in some zones, plenty of congestions!\\
+\begin{columns}
+	\begin{column}{0.4\textwidth}
+		\includegraphics[width=5cm, clip, trim={0 0.1cm 0 0}]{images/biding_zones_eu.png}
+		\source{\href{https://acer.europa.eu/sites/default/files/documents/en/Documents/Presentations\%20Webinars/20210624_Public_webinar_alternative_BZ_configurations.pdf}{ACER, 2021}}
+	\end{column}
+	\begin{column}{0.6\textwidth}
+		Elisabeth?
+		explain how geographical matching is defined IRL\\
+		explain that it's relatively easy to implement in models\\
+		geographical matching is than both string and unstict, depending how you look at it\\
+		in some zones, plenty of congestions!\\
+	\end{column}
+\end{columns}
 \end{frame}
 
 \section{III Pillar - Additionality}
-\begin{frame}{Additionality}
+\begin{frame}{III Pillar - Additionality}
 
   Iegor starts? 
 
