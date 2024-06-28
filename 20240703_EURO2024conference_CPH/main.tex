@@ -2,6 +2,12 @@
 
 \input{backmatter.tex}
 
+\usepackage[
+type={CC},
+modifier={by},
+version={4.0},
+]{doclicense}
+
 \title{Three Pillars of Hourly Matching: \\ A Tour From Model Land to Real World}
 
 %\subtitle{---}
@@ -24,13 +30,52 @@
   \vspace{5.5cm}
   }
 
-  
+
+\setbeamertemplate{footline}{
+	\usebeamercolor[fg]{framesource}%
+	\usebeamerfont{page number in head}%
+	\hspace{0.2cm}
+	\small \insertframenumber
+	\vspace{0.2cm}
+	\scalebox{0.5}{\doclicenseIcon}
+	\hfill
+	\includegraphics[height=0.8cm]{images/tublogo.pdf}
+	\hspace{0.2cm}
+}
+
+% Disable the section title slides
+\AtBeginSection[]{}
+\setbeamercovered{transparent}
+
+\setbeamertemplate{footline}[
+myframe number]
+
+% Change alert color to black
+\setbeamercolor{alerted text}{fg=black}
+
+% Redefine \sectionpage to only show the section name and not increment the frame counter
+\makeatletter
+\patchcmd{\sectionpage}{\usebeamertemplate*{headline}}{}{}{}
+\patchcmd{\sectionpage}{\begin{center}\usebeamerfont*{section name}\insertsectionnumber.\ \end{center}}{}{}{}
+\patchcmd{\sectionpage}{\begin{center}\usebeamerfont*{section title}\usebeamercolor[fg]{section title}\insertsectionhead\end{center}}{\begin{center}\usebeamerfont*{section title}\usebeamercolor[fg]{section title}\insertsectionhead\end{center}}{}{}
+\makeatother
+
+% Redefine \sectionpage to remove the section number
+\def\sectionpage{\begin{centering}
+		\begin{beamercolorbox}[sep=12pt,center]{part title}
+			\usebeamerfont{part title}\insertsectionhead\par
+		\end{beamercolorbox}
+	\end{centering}
+}
+
+\usetheme[]{Berlin}
 \begin{document}
 
 \maketitle
 
 %%%% 
 
+\section{Introduction}
 
 \begin{frame}{Setting the scene}
   
@@ -48,7 +93,7 @@
   
 \end{frame}
 
-
+\section{I Pillar - Temporal matching}
 \begin{frame}{Temporal matching: definition}
 
   -- maybe we show some teasing screenshot before showing this slide with math, e.g., industry figting for easier regulation.
@@ -120,7 +165,7 @@
 \end{frame}
 
 
-
+\section{II Pillar - Geographical matching}
 \begin{frame}{Geographical matching}
   Iegor?
   \includegraphics[width=13cm]{images/go_leak.png}
@@ -154,7 +199,7 @@
   in some zones, plenty of congestions!\\
 \end{frame}
 
-
+\section{III Pillar - Additionality}
 \begin{frame}{Additionality}
 
   Iegor starts? 
@@ -202,7 +247,7 @@
 
 \end{frame}
 
-
+\section{Take Aways}
 \begin{frame}{Take aways (first version)}
 
 \begin{columns}
