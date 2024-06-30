@@ -100,33 +100,38 @@ myframe number]
 
 \section{I Pillar - Temporal matching}
 \begin{frame}{I Pillar: Temporal matching}
+	\textbf{Discussion}: Implementing stricter regulations requires assessing the impact on hydrogen production costs.
 	\begin{columns}[t]
 		\begin{column}{0.5\textwidth}
-				\includegraphics[width=0.7\linewidth]{images/h2_temporal_news4}
-				\href{https://www.hydrogeninsight.com/electrolysers/hourly-electricity-matching-is-the-only-reliable-way-to-reduce-emissions-from-green-hydrogen-study/2-1-1378431}{Hydrogeninsight, December 2022}
-				\includegraphics[width=0.7\linewidth]{images/h2_temporal_news1}
-				\href{https://www.abnamro.com/research/en/our-research/sustainaweekly-not-so-green-hydrogen-perhaps-a-necessary-evil}{Abnamro, October 2022}
+			\centering
+				\includegraphics[width=5cm]{images/h2_temporal_news4}
+				\newline
+				\vspace{0.2cm}
+				\newline
+				\includegraphics[width=4cm]{images/h2_temporal_news1}
 		\end{column}
 	\begin{column}{0.5\textwidth}
-		\includegraphics[width=0.7\linewidth]{images/h2_temporal_news2}
-		\href{https://www.rechargenews.com/energy-transition/proposed-stringent-eu-rules-on-green-hydrogen-would-put-the-brakes-on-development-/2-1-1223746}{Hydrogeninsight, May 2022}
-		\includegraphics[width=0.7\linewidth]{images/h2_temporal_news3}
-		\href{https://www.hydrogeninsight.com/policy/far-from-perfect-strict-rules-in-new-delegated-act-will-make-green-h2-projects-more-expensive-hydrogen-europe/2-1-1403241}{Hydrogeninsight, February 2023}
+		\centering
+		\includegraphics[width=5cm]{images/h2_temporal_news2}
+		\newline
+		\vspace{0.4cm}
+		\centering
+		\newline
+		\includegraphics[width=5cm]{images/h2_temporal_news3}
 		
 	\end{column}
 	\end{columns}
+\source{\href{https://www.hydrogeninsight.com/policy/far-from-perfect-strict-rules-in-new-delegated-act-will-make-green-h2-projects-more-expensive-hydrogen-europe/2-1-1403241}{Hydrogeninsight (February 2023)}, \href{https://www.abnamro.com/research/en/our-research/sustainaweekly-not-so-green-hydrogen-perhaps-a-necessary-evil}{Abnamro (October 2022)}, \href{https://www.rechargenews.com/energy-transition/proposed-stringent-eu-rules-on-green-hydrogen-would-put-the-brakes-on-development-/2-1-1223746}{rechargenews (May 2022)}, \href{https://www.hydrogeninsight.com/policy/far-from-perfect-strict-rules-in-new-delegated-act-will-make-green-h2-projects-more-expensive-hydrogen-europe/2-1-1403241}{Hydrogeninsight (February 2023)}}
 \end{frame}
 \begin{frame}{Temporal matching: definition}
 
-  -- maybe we show some teasing screenshot before showing this slide with math, e.g., industry figting for easier regulation.
-
-  \alert{Hourly matching} is modelled with a constraint (\ref{eqn:CFE}), 
+  \alert{Hourly matching} is modelled with a constraint (\ref{eqn:CFE_1}), 
   which matches electricity demand for eletrolysis process with generation of renewable resources on an hourly basis. 
 
   \vspace{0.1cm}
   \begin{equation}
   \sum_{r\in R} g_{r,t} + \sum_{s\in S} \left(\bar{g}_{s,t} - \ubar{g}_{s,t}\right) - ex_t = d_t
-  \label{eqn:CFE}
+  \label{eqn:CFE_1}
   \end{equation}
   \vspace{0.1cm}
   
@@ -137,7 +142,7 @@ myframe number]
   -- explain the equation\\ 
   -- Now, what are the hidden issues? let's talk about the first point -- flexibility. \\
   }}
-  \source{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}
+  \source{\href{https://iopscience.iop.org/article/10.1088/1748-9326/ad2239}{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}}
 
   Elisabeth?
 
@@ -162,7 +167,7 @@ myframe number]
 	\centering
     \alert{Flexible} operation \alert{reduces} emissions and costs, but \alert{constant} operations \alert{increase} them.
     
-  \source{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen} 
+  \source{\href{https://iopscience.iop.org/article/10.1088/1748-9326/ad2239}{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}}
 
 \end{frame}
 
@@ -181,7 +186,7 @@ myframe number]
   		\includegraphics[width=1\linewidth]{images/hourly_excess}
   	\end{column}
   \end{columns}
-  \source{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}
+  \source{\href{https://iopscience.iop.org/article/10.1088/1748-9326/ad2239}{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}}
 
 \end{frame}
 
@@ -234,18 +239,21 @@ myframe number]
 \end{frame}
   
 
-\begin{frame}{Geographical matching}
+\begin{frame}{Geographical matching for green hydrogen production}
 \begin{columns}
 	\begin{column}{0.4\textwidth}
 		\includegraphics[width=5cm, clip, trim={0 0.1cm 0 0}]{images/biding_zones_eu.png}
 		\source{\href{https://acer.europa.eu/sites/default/files/documents/en/Documents/Presentations\%20Webinars/20210624_Public_webinar_alternative_BZ_configurations.pdf}{ACER, 2021}}
 	\end{column}
 	\begin{column}{0.6\textwidth}
-		Elisabeth?
-		explain how geographical matching is defined IRL\\
-		explain that it's relatively easy to implement in models\\
-		geographical matching is than both string and unstict, depending how you look at it\\
-		in some zones, plenty of congestions!\\
+		How far can renewable generation and electrolysis be apart? 
+		\begin{itemize}
+			\item 	Regulation in the EU: Geographical matching within one \alert{bidding zone}.
+			\item 	Model implementation is straightforward. 
+		\end{itemize}
+
+	\vspace{0.5 cm}
+		\textbf{Challenges}: Especially in large bidding zones there can be \alert{transmission bottlenecks} actually hindering the transport of renewable generation to the electrolysis. 
 	\end{column}
 \end{columns}
 \end{frame}
