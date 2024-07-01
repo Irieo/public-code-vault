@@ -83,16 +83,24 @@ myframe number]
 \section{Introduction}
 
 \begin{frame}{Setting the scene}
-  
-  \begin{itemize}
-    \item Voluntary 24/7 CFE procurement in electricity, Delegated act for H2 Regulation
-    \item Both focus on the \enquote{Three Pillars} -- set of rules on temporal, spatial and additionality aspects of matching demand and clean power supply
-    \item Today we go through the \alert{three pillars} and discuss: \\
-    -- how the pillars are implemented in the real world \\
-    -- how the pillars are implemented in mathematical models \\
-    -- caveats and challenges of model implementations \\
-    -- impact of model setups on results and policy recommendations \\
-  \end{itemize}
+  \begin{columns}
+  	\begin{column}{0.7\textwidth}
+  		 \begin{itemize}
+  			\item Voluntary 24/7 CFE procurement in electricity, Delegated act for H2 Regulation
+  			\item Both focus on the \enquote{Three Pillars} -- set of rules on temporal, spatial and additionality aspects of matching demand and clean power supply
+  			\item Today we go through the \alert{three pillars} and discuss: \\
+  			-- how the pillars are implemented in the real world \\
+  			-- how the pillars are implemented in mathematical models \\
+  			-- caveats and challenges of model implementations \\
+  			-- impact of model setups on results and policy recommendations \\
+  		\end{itemize}
+  	\end{column}
+  \begin{column}{0.3\textwidth}
+  		\includegraphics[width=1\linewidth]{images/3pillars}  
+  		\source{ChatGPT4 hallucination, 2024}	
+  \end{column}
+  \end{columns}
+ 
 
   Iegor?
   
@@ -124,56 +132,104 @@ myframe number]
 \source{\href{https://www.hydrogeninsight.com/policy/far-from-perfect-strict-rules-in-new-delegated-act-will-make-green-h2-projects-more-expensive-hydrogen-europe/2-1-1403241}{Hydrogeninsight (February 2023)}, \href{https://www.abnamro.com/research/en/our-research/sustainaweekly-not-so-green-hydrogen-perhaps-a-necessary-evil}{Abnamro (October 2022)}, \href{https://www.rechargenews.com/energy-transition/proposed-stringent-eu-rules-on-green-hydrogen-would-put-the-brakes-on-development-/2-1-1223746}{rechargenews (May 2022)}, \href{https://www.hydrogeninsight.com/policy/far-from-perfect-strict-rules-in-new-delegated-act-will-make-green-h2-projects-more-expensive-hydrogen-europe/2-1-1403241}{Hydrogeninsight (February 2023)}}
 \end{frame}
 \begin{frame}{Temporal matching: definition}
+	
+	\alert{Hourly matching} is modelled with a constraint, 
+	which matches electricity demand for electrolysis process with generation of renewable resources on an hourly basis. 
+	\centering
+	\includegraphics[width=0.6\linewidth, clip, trim={0cm 0cm 0cm 0cm}]{images/hourly_eq_explained_v0}
 
-  \alert{Hourly matching} is modelled with a constraint (\ref{eqn:CFE_1}), 
-  which matches electricity demand for eletrolysis process with generation of renewable resources on an hourly basis. 
+	\source{\href{https://iopscience.iop.org/article/10.1088/1748-9326/ad2239}{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}}
 
-  \vspace{0.1cm}
-  \begin{equation}
-  \sum_{r\in R} g_{r,t} + \sum_{s\in S} \left(\bar{g}_{s,t} - \ubar{g}_{s,t}\right) - ex_t = d_t
-  \label{eqn:CFE_1}
-  \end{equation}
-  \vspace{0.1cm}
-  
-  \noindent\fbox{%
-    \parbox{\textwidth}{%
-  Here eq. 2 from https://iopscience.iop.org/article/10.1088/1748-9326/ad2239/pdf \\
-  -- maybe here we say along the lines that the main fight in the Delegated Act was for this equation. \\
-  -- explain the equation\\ 
-  -- Now, what are the hidden issues? let's talk about the first point -- flexibility. \\
-  }}
+\end{frame}
+\begin{frame}{Temporal matching: definition}
+	\addtocounter{framenumber}{-1}
+	\alert{Hourly matching} is modelled with a constraint, 
+	which matches electricity demand for electrolysis process with generation of renewable resources on an hourly basis. 
+	\centering
+	\includegraphics[width=0.6\linewidth, clip, trim={0cm 0cm 0cm 0cm}]{images/hourly_eq_explained_v1}
+	
+	\source{\href{https://iopscience.iop.org/article/10.1088/1748-9326/ad2239}{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}}
+
+\end{frame}
+\begin{frame}{Temporal matching: definition}
+	\addtocounter{framenumber}{-1}
+	\alert{Hourly matching} is modelled with a constraint, 
+	which matches electricity demand for electrolysis process with generation of renewable resources on an hourly basis. 
+	\centering
+	\includegraphics[width=0.6\linewidth, clip, trim={0cm 0cm 0cm 0cm}]{images/hourly_eq_explained_v2}
+	
+	\source{\href{https://iopscience.iop.org/article/10.1088/1748-9326/ad2239}{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}}
+
+\end{frame}
+\begin{frame}{Temporal matching: definition}
+	\addtocounter{framenumber}{-1}
+	\alert{Hourly matching} is modelled with a constraint, 
+	which matches electricity demand for electrolysis process with generation of renewable resources on an hourly basis. 
+	\centering
+	\includegraphics[width=0.6\linewidth, clip, trim={0cm 0cm 0cm 0cm}]{images/hourly_eq_explained_v3}
+	
+	\source{\href{https://iopscience.iop.org/article/10.1088/1748-9326/ad2239}{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}}
+
+\end{frame}
+\begin{frame}{Temporal matching: definition}
+\addtocounter{framenumber}{-1}
+  \alert{Hourly matching} is modelled with a constraint, 
+  which matches electricity demand for electrolysis process with generation of renewable resources on an hourly basis. 
+
+%  \vspace{0.1cm}
+%  \begin{equation}
+%  \sum_{r\in R} g_{r,t} + \sum_{s\in S} \left(\bar{g}_{s,t} - \ubar{g}_{s,t}\right) - ex_t = d_t
+%  \label{eqn:CFE_1}
+%  \end{equation}
+%  \vspace{0.1cm}
+  \centering
+  \includegraphics[width=0.6\linewidth, clip, trim={0cm 0cm 0cm 0cm}]{images/hourly_eq_explained}
+%  \noindent\fbox{%
+%    \parbox{\textwidth}{%
+%  Here eq. 2 from https://iopscience.iop.org/article/10.1088/1748-9326/ad2239/pdf \\
+%  -- maybe here we say along the lines that the main fight in the Delegated Act was for this equation. \\
+%  -- explain the equation\\ 
+%  -- Now, what are the hidden issues? let's talk about the first point -- flexibility. \\
+%  }}
   \source{\href{https://iopscience.iop.org/article/10.1088/1748-9326/ad2239}{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}}
-
-  Elisabeth?
-
 \end{frame}
 
 
 \begin{frame}{Temporal matching: flexibility changes everything}
+	\vspace{-5cm} 
+	\centering
+	\includegraphics[width=0.6\linewidth, clip, trim={0cm 5cm 0cm 5cm}]{images/store_flexibility_v2}
+
+
+	\source{\href{https://iopscience.iop.org/article/10.1088/1748-9326/ad2239}{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}}
+\end{frame}
+
+\begin{frame}{Temporal matching: flexibility changes everything}
+	\addtocounter{framenumber}{-1}
+	\vspace{-1cm} 
 	\centering
 	\includegraphics[width=0.6\linewidth, clip, trim={0cm 5cm 0cm 5cm}]{images/store_flexibility_v2}
 	\begin{columns}[t]
 		\begin{column}{0.5\textwidth}
-			  	\centering
-			\textbf{Emissions} \\
-  	\includegraphics[width=1\linewidth, clip, trim={5cm 4cm 5cm 4cm}]{images/emissions_flexibility}
-  	\end{column}
-\begin{column}{0.5\textwidth}
-		\centering
-	\textbf{Hydrogen production costs} \\
-	\includegraphics[width=1\linewidth, clip, trim={5cm 4cm 5cm 4cm}]{images/costs_flexibility}
-\end{column}
-\end{columns}
-	\centering
-    \alert{Flexible} operation \alert{reduces} emissions and costs, but \alert{constant} operations \alert{increase} them.
-    
-  \source{\href{https://iopscience.iop.org/article/10.1088/1748-9326/ad2239}{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}}
+			\centering
+				\textbf{Emissions} \\
+				\includegraphics[width=1\linewidth, clip, trim={5cm 4cm 5cm 4cm}]{images/emissions_flexibility}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+				\textbf{Hydrogen production costs} \\
+				\includegraphics[width=1\linewidth, clip, trim={5cm 4cm 5cm 4cm}]{images/costs_flexibility}
+		\end{column}
+	\end{columns}
 
+	Flexibility \alert{reduces} emissions and costs.
+	\source{\href{https://iopscience.iop.org/article/10.1088/1748-9326/ad2239}{Zeyen et al. (2023): Temporal regulation \\ of renewable supply for electrolytic hydrogen}}
 \end{frame}
 
-
-\begin{frame}{Temporal matching: higher excess sales reduce emissions}
-
+\begin{frame}{Temporal matching: higher excess sales reduce emissions and costs}
+	\centering
+	\vspace{-2cm}
+	The \alert{costs of hydrogen production decrease} by up to 30\% in case of flexible demand + hourly matching due to the larger profits from excess sales.
+	\vspace{0.5cm}
   	\begin{columns}[t]
   	\begin{column}{0.5\textwidth}
   		\centering
@@ -272,10 +328,13 @@ myframe number]
 
 \begin{frame}{Additionality: definition challenges}
 
-  Iegor or Elisabeth?
-
-  -- additionality in the real world: RED definition, Google definition, DA definition\\
-
+  Iegor or Elisabeth?\\
+Different definitions:
+\begin{itemize}
+	\item \textbf{Google}:
+	\item \textbf{Delegated Act}: Hydrogen producer need to conclude power purchase agreement (PPA)s with new and unsupported renewable generation capacities. 
+\end{itemize}
+\textbf{Challenge}: Hard to define if renewables are truly additional or would have been built in any case to reach national renewable generation targets.
 \end{frame}
 
 
@@ -297,17 +356,25 @@ myframe number]
 
 
 \begin{frame}{Additionality: how we model a background grid 2/2?}
-
-  Elisabeth
-
-  -- here: cooptimisation vs sequential optimisation, results and thoughts about all it.
-
-  -- conclude with reference to Lissy's paper on additionality
-
+\begin{columns}[t]
+	\begin{column}{0.5\textwidth}
+		\centering
+		\textbf{Two step optimisation} \\
+			Clear additionality
+			\includegraphics[width=1\linewidth]{images/emissions_twostep_v2}		
+	\end{column}
+	\begin{column}{0.5\textwidth}
+		\centering
+		\textbf{One step optimisation} \\
+		RES compete for good resources
+			\includegraphics[width=1\linewidth]{images/onestepoptimisation}
+	\end{column}
+\end{columns}
+ There are many studies who analysed the impact on how additionality is modelled in more detail, e.g. \href{https://www.nature.com/articles/s41560-023-01435-0}{Giovanello et al. (2024, Nature Energy), \href{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4636218}{Langer et al. (2024)}}.
 \end{frame}
 
 \section{Take Aways}
-\begin{frame}{Take aways (first version)}
+\begin{frame}{Take aways}
 
 \begin{columns}
 \begin{column}{7cm}
