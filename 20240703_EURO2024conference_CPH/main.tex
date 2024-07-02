@@ -82,29 +82,27 @@ myframe number]
 
 \section{Introduction}
 
-\begin{frame}{Setting the scene}
+\begin{frame}{The Three Pillars}
+
   \begin{columns}
-  	\begin{column}{0.7\textwidth}
+  	\begin{column}{0.6\textwidth}
   		 \begin{itemize}
-  			\item Voluntary 24/7 CFE procurement in electricity, Delegated act for H2 Regulation
-  			\item Both focus on the \enquote{Three Pillars} -- set of rules on temporal, spatial and additionality aspects of matching demand and clean power supply
-  			\item Today we go through the \alert{three pillars} and discuss: \\
-  			-- how the pillars are implemented in the real world \\
-  			-- how the pillars are implemented in mathematical models \\
-  			-- caveats and challenges of model implementations \\
-  			-- impact of model setups on results and policy recommendations \\
-  		\end{itemize}
+  			\item A concept of \alert{hourly matching} got into the spotlight with debates on clean hydrogen regulation
+        \item Also a foundation for voluntary 24/7 carbon-free electricity (CFE) procurement  
+  			\item Set of rules and regulations, aka \alert{the Three Pillars} address aspects of temporal alignment, geographical scope, and additionality of clean energy supply
+  			\item Today, let's: \\
+        -- discuss the Three Pillars in the real world and in the mathematical models\\
+        -- try to bridge the gap between the two
+        \end{itemize}        
   	\end{column}
-  \begin{column}{0.3\textwidth}
+  \begin{column}{0.4\textwidth}
   		\includegraphics[width=1\linewidth]{images/3pillars}  
   		\source{ChatGPT4 hallucination, 2024}	
   \end{column}
   \end{columns}
- 
 
-  Iegor?
-  
 \end{frame}
+
 
 \section{I Pillar - Temporal matching}
 \begin{frame}{I Pillar: Temporal matching}
@@ -247,34 +245,33 @@ myframe number]
 \end{frame}
 
 
-\begin{frame}{Temporal matching: (CFE story)}
+\begin{frame}{Temporal matching: considering grid CFE supply}
 
-  Here, the \alert{hourly matching} constraint is extended to include electricity consumption from the regional grid:
+  Here, the \alert{hourly matching constraint} is extended to include electricity consumption from the regional grid:
 
   \vspace{0.1cm}
-  \begin{equation}
+  \begin{equation*}
   \sum_{r\in CFE, t\in T} g_{r,t} + \sum_{s\in STO, t\in T} \left(\bar{g}_{s,t} - \ubar{g}_{s,t}\right) - \sum_{t\in T} ex_t + \textcolor{red}{\sum_{t\in T} CFE_t \cdot im_t} \geq x \cdot \sum_{t\in T} d_t
   \label{eqn:CFE}
-  \end{equation}
+  \end{equation*}
   \vspace{0.1cm}
   \source{Riepin \& Brown (2023): https://zenodo.org/records/7180098}
 
   \noindent\fbox{%
     \parbox{\textwidth}{%
-    The \alert{grid CFE factor} $CFE_t$ in eq. (\ref{eqn:CFE}) defines the share of 
-    carbon-free electricity in grid imports. \\
-    -- depends how you scope out CFE calculation \\
-    -- storage tracing \\
-    -- CFE isn't a parameter but a variable \\
-  }}
-  Iegor
+    A \enquote{CFE score of the grid} $CFE_t$ can be seen as the percentage of clean electricity in each MWh of imported     electricity from the regional grid to supply participating 24/7 loads in a given hour.
+    }}
+    
+    Challenges:\\
+    -- Choosing a \alert{geographical scope} to calculate  $CFE_t$\\
+    -- Considering a \alert{residual mix} \\
+    -- $\sum_{t\in T} CFE_t \cdot im_t$ is a \alert{nonconvex term}
 
 \end{frame}
 
 
 \section{II Pillar - Geographical matching}
 \begin{frame}{II Pillar - Geographical matching}
-  Iegor?
   \includegraphics[width=13cm]{images/go_leak.png}
   \source{https://www.ffe.de/en/publications/norway-and-the-double-marketing-of-renewable-energies/}
 \end{frame}
@@ -317,30 +314,31 @@ myframe number]
 \section{III Pillar - Additionality}
 \begin{frame}{III Pillar - Additionality}
 
-  Iegor starts? 
+  \begin{itemize}
+  
+  \item  \textbf{Idea}: carbon-free energy supply enabling the deployment of clean electricity generation (or clean hydrogen production) should be new---\alert{and additional}---to the grid, i.e., it would \textit{not} have occurred without the action of the claiming party.
 
-  -- start with the fact that it's complex and messy both in real world and in models\\
-  -- define it (over MW and MWh)\\
-  -- as a funny reference, we can re-use the Microsoft PPA deal example with existing nuclear power.
+  \item \textbf{Real world}: Complicated, there is no conterfactual
+
+  \item \textbf{Models}: Complex (really!)
+  
+  \end{itemize}
 
 \end{frame}
 
 
 \begin{frame}{Additionality: definition challenges}
 
-  Iegor or Elisabeth?\\
-Different definitions:
 \begin{itemize}
-	\item \textbf{Google}:
-	\item \textbf{Delegated Act}: Hydrogen producer need to conclude power purchase agreement (PPA)s with new and unsupported renewable generation capacities. 
+	\item \textbf{Voluntary clean electricity procurement}: \enquote{Generally speaking, Google seeks to sign contracts to purchase both electricity and carbon-free attributes from clean energy projects that are in the development stage} (Google, 2021).
+	\item \textbf{EU Delegated Act for Renewable Hydrogen}: \enquote{Hydrogen producer need to conclude power purchase agreements (PPA)s with new and unsupported renewable generation capacities.} 
 \end{itemize}
-\textbf{Challenge}: Hard to define if renewables are truly additional or would have been built in any case to reach national renewable generation targets.
+\textbf{Challenge}: Hard to define if renewables are truly additional or would have been built in any case to reach national renewable generation targets.\\
+\textbf{NB}: What should be additional: capacity (MW) or energy (MWh)?
 \end{frame}
 
 
 \begin{frame}{Additionality: how to model a background grid 1/2?}
-
-  Iegor
 
   \begin{columns}
     \begin{column}{7cm}
@@ -350,8 +348,9 @@ Different definitions:
       \includegraphics[width=7.5cm]{images/ci_emisrate.pdf}
     \end{column}
   \end{columns}
-
-  Scenario: Germany -- 2025 -- 24/7 CFE with 10\% participation of C\&I sector -- baseload profile -- all costs from \href{https://ens.dk/en/our-services/technology-catalogues}{DEA 2025}. Left: Constrained RES expansion (the Easter Package), Right: unconstrained RES expansion.
+An illustrative example of 24/7 CFE matching in Germany 2025. Left: constrained RES expansion (aligned with the national plan), Right: unconstrained RES expansion 
+\source{https://zenodo.org/records/7180098\\
+https://zenodo.org/records/10407831}
 \end{frame}
 
 
@@ -370,7 +369,7 @@ Different definitions:
 			\includegraphics[width=1\linewidth]{images/onestepoptimisation}
 	\end{column}
 \end{columns}
- There are many studies who analysed the impact on how additionality is modelled in more detail, e.g. \href{https://www.nature.com/articles/s41560-023-01435-0}{Giovanello et al. (2024, Nature Energy), \href{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4636218}{Langer et al. (2024)}}.
+ There are many studies who analysed the impact on how additionality is modelled in more detail, e.g. \href{https://www.nature.com/articles/s41560-023-01435-0}{Giovanello et al. (2024), \href{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4636218}{Langer et al. (2024)}}.
 \end{frame}
 
 \section{Take Aways}
