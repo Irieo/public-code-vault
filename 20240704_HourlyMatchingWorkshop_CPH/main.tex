@@ -16,13 +16,64 @@
 
 }
 
+\usepackage{tcolorbox}
+\usepackage[
+type={CC},
+modifier={by},
+version={4.0},
+]{doclicense}
+
 \titlegraphic{%
   \vspace{0cm}
   \hspace{10.7cm}
     \includegraphics[trim=0 0cm 0 0cm,height=1.2cm,clip=true]{images/TUB.png}
   \vspace{5.5cm}
   }
-  
+
+\setbeamertemplate{footline}{
+	\usebeamercolor[fg]{framesource}%
+	\usebeamerfont{page number in head}%
+	\hspace{0.2cm}
+	\small \insertframenumber
+	\vspace{0.2cm}
+	\scalebox{0.5}{\doclicenseIcon}
+	\hfill
+	%	\includegraphics[height=0.8cm]{images/tublogo.pdf}
+	%	\hspace{0.2cm}
+}
+
+% Disable the section title slides
+\AtBeginSection[]{}
+\setbeamercovered{transparent}
+
+\setbeamertemplate{footline}[
+myframe number]
+
+% Change alert color to black
+\setbeamercolor{alerted text}{fg=black}
+
+% SOURCES
+\setbeamercolor{framesource}{fg=gray}
+\setbeamerfont{framesource}{size=\tiny}
+
+
+% Redefine \sectionpage to only show the section name and not increment the frame counter
+\makeatletter
+\patchcmd{\sectionpage}{\usebeamertemplate*{headline}}{}{}{}
+\patchcmd{\sectionpage}{\begin{center}\usebeamerfont*{section name}\insertsectionnumber.\ \end{center}}{}{}{}
+\patchcmd{\sectionpage}{\begin{center}\usebeamerfont*{section title}\usebeamercolor[fg]{section title}\insertsectionhead\end{center}}{\begin{center}\usebeamerfont*{section title}\usebeamercolor[fg]{section title}\insertsectionhead\end{center}}{}{}
+\makeatother
+
+% Redefine \sectionpage to remove the section number
+\def\sectionpage{\begin{centering}
+		\begin{beamercolorbox}[sep=12pt,center]{part title}
+			\usebeamerfont{part title}\insertsectionhead\par
+		\end{beamercolorbox}
+	\end{centering}
+}
+
+\usetheme[]{Berlin}
+
 \begin{document}
 
 \maketitle
@@ -51,8 +102,191 @@
 % \end{columns}
 % \end{frame}
 
+\section{Introduction}
+
+\begin{frame}{Clean Electricity Procurement}
+	\vspace{-1cm}
+	\centering
+	How to \alert{match} renewable generation with electricity demand?
+	\vspace{0.5cm}
+%		\begin{itemize}
+%		\item A concept of \alert{hourly matching} got into the spotlight with debates on clean hydrogen regulation
+%		\item Also a foundation for voluntary 24/7 carbon-free electricity (CFE) procurement  
+%	\end{itemize}   
+%		\includegraphics[width=0.7\linewidth]{images/hourly_electricity_procurement_v2}  
+%	\source{ChatGPT4 hallucination, 2024}
+	  \begin{columns}
+		\begin{column}{0.4\textwidth}
+		\begin{itemize}
+			\item A concept of \alert{hourly matching} got into the spotlight with debates on clean hydrogen regulation
+			\item Also a foundation for voluntary 24/7 carbon-free electricity (CFE) procurement  
+		\end{itemize}      
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\includegraphics[width=1\linewidth]{images/hourly_electricity_procurement_v2}  
+			\source{ChatGPT4 hallucination, 2024}	
+		\end{column}
+	\end{columns}
+\end{frame}
+\section{Temporal Regulation Green Hydrogen}
+\begin{frame}[noframenumbering, plain]
+	
+	\begin{figure}
+		\includegraphics[trim={0cm 0cm 0cm 0cm}, width=0.9\linewidth]{images/titlepage_greenh2.pdf}
+	\end{figure}
+	
+\end{frame}
+\begin{frame}{Motivation - The Urgency of Green Hydrogen Standards}
+	%	\alert{Background}: Green hydrogen can be used in sectors which are hard to decarbonise.  Thus, there's a need for clear standards defining 'green' hydrogen. \\
+	\alert{Challenge}: Rapid scale up of affordable green hydrogen production without emissions increases. \\
+	\alert{What happened so far}:
+	\begin{itemize}
+		\item Various standards are under discussion, differing in how strictly renewable generation must align with the electrolysis electricity demand.
+		\item The EU adopted a Delegated Act in 2023, hourly matching from 2030 
+		\\ $\rightarrow$ \alert{Delegated Act} is subject to \alert{review in July 2028}.
+		%		\item Germany published its updated national green hydrogen strategy in July 2023
+	\end{itemize} 
+\end{frame}
+
+\begin{frame}{Questions We Want to Answer in This Study}
+	\begin{columns}[t]
+		% Column 1
+		\begin{column}{0.5\textwidth}
+			\centering
+			\includegraphics[width=2cm]{images/globalwarming.png} \\
+			How do \alert{various certification} standards affect \alert{emissions}?\\
+		\end{column}
+		
+		% Column 2
+		\begin{column}{0.5\textwidth}
+			\centering
+			\includegraphics[width=2cm]{images/coin.png} \\
+			How do regulations impact \alert{hydrogen production costs}?
+		\end{column}
+	\end{columns}
+	\vspace{0.5 cm}
+	\begin{tcolorbox}[colback=gray!5,colframe=white!60!black,title=\textbf{Scientific Novelty}]
+		\alert{Quantify impact of individual modelling assumptions:} This includes hydrogen storage options, the background grid, and the methods used to model additionality.
+	\end{tcolorbox}
+\end{frame}
 
 
+\begin{frame}{Methods - Modelling Hydrogen's Temporal Regulation}
+	Hydrogen production in one selected European country with a \alert{constant} hydrogen demand of 28 TWh$_{\text{H}_2}$/a. 
+	\begin{figure}
+		\centering
+		\includegraphics[trim=0 0cm 0cm 3cm,clip=true, width=0.9\linewidth]{images/scenarios_new5_revised}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}{Results - Emission Impacts of Hydrogen Production: Germany 2025}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{images/consequential_emissions_by_carrier_3200wmonthly_v0.pdf}
+	\end{figure}
+	%To prevent emission increases, additional local procurement is essential. \\
+	%The effects of annual vs. monthly matching are complex: flexible operations reduce emissions, but static operations increase them.\\
+	%Hourly matching with excess sales offers the most significant emission reductions.
+\end{frame}
+
+
+\begin{frame}{Results - Emission Impacts of Hydrogen Production: Germany 2025}
+	\addtocounter{framenumber}{-1}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{images/consequential_emissions_by_carrier_3200wmonthly_v1.pdf}
+	\end{figure}
+	\begin{itemize}
+		\item \alert{Additional local procurement} is \alert{essential} to prevent emission increases
+		%		\item \alert{Hourly matching} with excess sales offers the \alert{most significant emission reductions}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Results - Emission Impacts of Hydrogen Production: Germany 2025}
+	\addtocounter{framenumber}{-1}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{images/consequential_emissions_by_carrier_3200wmonthly.pdf}
+	\end{figure}
+	\begin{itemize}
+		\item \alert{Additional local procurement} is \alert{essential} to prevent emission increases
+		\item The effects of annual and monthly matching are complex: \alert{flexible operations reduce} emissions, but \alert{constant} operations \alert{increase} them
+		%		\item \alert{Hourly matching} with excess sales offers the \alert{most significant emission reductions}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Results - Hydrogen Production Costs: Germany 2025}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{images/costbreakdown_3200wmonthly.pdf}
+		\label{fig:costbreakdown3200}
+	\end{figure}
+	\alert{Small Cost Premium}: Hourly matching has a 7--8\% cost premium over annual matching, given low-cost hydrogen storage or flexible demand
+\end{frame}
+
+\begin{frame}{Comparing Hydrogen Production in Carbon-Intensive vs. Clean Grids}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{../../../hourly_vs_annually/results/gas_price_35_nocrossover/graphs/consequential_emissions_by_carrier_3200_cleanness}
+	\end{figure}
+	\begin{columns}[T]
+		\begin{column}{0.48\textwidth}
+			\centering
+			\textbf{Lower RES share of 49\%} \\
+			\alert{Emissions} can \alert{rise} to nearly \alert{4x} the intensity of \alert{grey hydrogen}.
+%			\begin{itemize}
+%				\item \alert{Emissions} can \alert{rise} to nearly \alert{4x} the intensity of \alert{grey hydrogen}.
+%				\item \alert{Annual/monthly matching} can \alert{reduce emissions} with \alert{flexibility}. However, with \alert{costly storage}, they may \alert{rise} by up to 6\kgco.
+%			\end{itemize}
+		\end{column}
+		
+		\begin{column}{0.48\textwidth}
+			\centering
+			\textbf{Higher RES share of 80\%} \\
+			With \alert{higher decarbonisation}, temporal \alert{regulation} of hydrogen production matters \alert{less}.
+%			\begin{itemize}
+%				\item \alert{Emissions drop} in \alert{all} scenarios with \alert{additional} local RES.
+%				\item With \alert{higher decarbonisation}, temporal \alert{regulation} of hydrogen production matters \alert{less}.
+%			\end{itemize}
+			
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Take Aways - Temporal Regulation of Green Hydrogen Production}
+	\begin{tcolorbox}[colback=white!5,colframe=white!60!black,title=\textbf{Green hydrogen certification: Low emissions \& low costs require}]
+		\begin{columns}[t]
+			\begin{column}{0.7\textwidth}
+				%\begin{enumerate}
+				\includegraphics[width=0.09\linewidth]{images/res} Additional local renewable generation  \\
+				\vspace{0.2cm}
+				\includegraphics[trim={0 0.5cm 0 0}, clip, width=0.05\linewidth]{images/clock} Temporal matching either
+				\begin{itemize}
+					\item Hourly with flexible demand or low-cost storage
+					\item Annual with limited electrolysis full load hours
+					\item Annual with a largely decarbonised background grid
+				\end{itemize}
+				%\end{enumerate}
+			\end{column}
+			\begin{column}{0.3\textwidth}
+				\begin{figure}
+					\vspace{-0.5 cm}
+					\centering
+					\includegraphics[width=0.5\linewidth]{images/greenh2}
+				\end{figure}
+				
+			\end{column}
+		\end{columns}
+	\end{tcolorbox}
+	\textbf{Further interesting insights:}
+	\begin{itemize}
+		\item High dependency of consequential emissions on the background system
+		\item Impact on how additionality is modelled
+	\end{itemize}
+\end{frame}
+
+\section{24/7 Carbon-Free Electricity}
 % New study released: here we explore the value of demand flexibility for 24/7 CFE
 \begin{frame}{New study: The value of space-time load-shifting flexibility \\ 
   for 24/7 carbon-free electricity procurement (July 2023)}
