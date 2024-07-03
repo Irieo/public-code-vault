@@ -1,0 +1,231 @@
+% !TeX root = main.tex
+
+\input{backmatter.tex}
+
+\title{Insights from model based studies \\ on 24/7 CFE and green hydrogen regulation}
+
+%\subtitle{---}
+\author{
+  Elisabeth Zeyen \& Iegor Riepin\\
+  \hrefc{mailto:e.zeyen@tu-berlin.de}{e.zeyen@tu-berlin.de} $\vert\vert$ 
+  \hrefc{mailto:iegor.riepin@tu-berlin.de}{iegor.riepin@tu-berlin.de} \\
+  Technical University of Berlin
+  }
+
+\date{DTU, 04 July 2024 \\
+
+}
+
+\titlegraphic{%
+  \vspace{0cm}
+  \hspace{10.7cm}
+    \includegraphics[trim=0 0cm 0 0cm,height=1.2cm,clip=true]{images/TUB.png}
+  \vspace{5.5cm}
+  }
+  
+\begin{document}
+
+\maketitle
+
+%%%% 
+
+
+
+
+% % Data centers work on technical solutions
+% \begin{frame}{ICT companies work on concepts and technical solutions}
+
+%   \begin{columns}[T]
+%     \begin{column}{8cm}
+%     \includegraphics[width=9.1cm]{images/Radovanovic_blog.png}
+%   \end{column}
+
+%   \begin{column}{7cm}
+%     \includegraphics[width=7cm]{images/Koningstein_blog.png}
+%     \source{
+%       Sources: \\
+%       \hrefc{https://blog.google/inside-google/infrastructure/data-centers-work-harder-sun-shines-wind-blows/}{blog.google/data-centers-work-harder-sun-shines-wind-blows} \\
+%       \hrefc{https://blog.google/outreach-initiatives/sustainability/carbon-aware-computing-location/}{blog.google/carbon-aware-computing-location}}
+% \end{column}
+
+% \end{columns}
+% \end{frame}
+
+
+
+% New study released: here we explore the value of demand flexibility for 24/7 CFE
+\begin{frame}{New study: The value of space-time load-shifting flexibility \\ 
+  for 24/7 carbon-free electricity procurement (July 2023)}
+  
+    {\small
+    \begin{columns}
+    \begin{column}{9cm}
+    \includegraphics[width=10cm]{images/spatial-temporal-vlinks-cropped.png}
+    \end{column}
+  
+    \begin{column}{6cm}
+  
+    \begin{itemize}
+      \vspace{-0.2cm}
+       \item Key focuses: \\
+     -- How can demand flexibility reduce the required \alert{resources} and \alert{costs} of 24/7~CFE matching?\\ 
+     \vspace{0.1cm}
+     -- What are the \alert{signals} for optimal utilisation of demand flexibility?\\
+     \vspace{0.1cm}
+     -- What are the trade-offs and synergies from co-optimisation of \alert{spatial} and \alert{temporal} load shifting?
+  
+     \item Open-access research: \\
+     \vspace{0.2cm}
+     {\footnotesize
+     \faUnlock~study:
+     \hrefc{https://zenodo.org/records/8185850}{zenodo.org/records/8185850}\\
+     \faUnlock~code:
+     \hrefc{https://github.com/PyPSA/247-cfe}{github.com/PyPSA/247-cfe}\\
+     }
+
+     \item  A follow-up research paper to be released in March 2024.
+  
+    \end{itemize}
+    \end{column}
+    \end{columns}
+    }
+  \end{frame}
+  
+  
+  % Brief overview of the study design
+  \begin{frame}{Methods and study design}
+  
+    {\footnotesize
+    \begin{columns}
+    \begin{column}{9cm}
+    \includegraphics[width=10cm]{images/spatial-temporal-vlinks-cropped.png}
+    \end{column}
+  
+    \begin{column}{6cm}
+      \begin{itemize}
+        \vspace{-0.1cm}
+        \item The study is done with \alert{PyPSA} -- an open-source framework for modelling modern energy systems.
+        \item Model scope: \alert{\href{https://www.entsoe.eu/data/map/}{ENTSO-E area}} power system clustered to individual bidding zones, \alert{hourly} temporal resolution. 
+        \item Geographically scattered datacenters that are managed collectively. An operating company follows \alert{24/7 CFE strategy} in all locations.
+        \item \alert{Spatial} and \alert{temporal} load shifting mechamisms.
+        \item \alert{\enquote{Flexible workloads}}, i.e. electricity loads that can potentially be shifted in space or in time, are assumed to be in a range of {\{0\% .. 40\%\}}.
+      \end{itemize}
+      \end{column}
+      \end{columns}
+    }
+\end{frame}
+  
+
+\begin{frame}{Signal 1: quality of local renewable resouces}
+
+  \centering
+  \vspace{0.3cm}
+  \includegraphics[width=14cm]{images/results-1.png}
+
+\end{frame}
+
+
+\begin{frame}{Signal 2: low correlation of wind power generation over long distances}
+  \centering
+  \vspace{0.3cm}
+  \includegraphics[width=14cm]{images/results-4.png}
+\end{frame}
+
+
+\begin{frame}{Cost savings as a function of distance between datacenter pair}
+  \centering
+  \vspace{0.3cm}
+  \includegraphics[width=14cm]{images/results-5.png}
+\end{frame}
+
+
+\begin{frame}{Time-series of optimized spatial load shifts (locations: DK-IE)}
+  \centering
+  \vspace{0.3cm}
+  \includegraphics[width=14cm]{images/results-6.png}
+\end{frame}
+
+
+\begin{frame}{Signal 3: time lag in solar radiation peaks due to Earth's rotation (1/2)}
+  \centering
+  \vspace{0.3cm}
+  \includegraphics[width=14cm]{images/results-7.png}
+\end{frame}
+
+
+\begin{frame}{Signal 3: time lag in solar radiation peaks due to Earth's rotation (2/2)}
+  \centering
+  \vspace{0.3cm}
+  \includegraphics[width=14cm]{images/results-8.png}
+\end{frame}
+
+
+
+\begin{frame}{Also in the study}
+  
+      \begin{itemize}
+      \item Scenarios for \alert{co-optimised} and \alert{isolated} utilisation of space-time load-shifting;
+      \item Scenarios for 24/7 CFE with \alert{98\% and 100\%} matching targets;
+      \item Scenarios with different \alert{24/7 technology options} (e.g., Long Duration Energy Storage);
+      \item 24/7 CFE \alert{cost breakdowns} and \alert{procurement strategies} for individual locations;
+      \item \alert{Synergies} and \alert{trade-offs} between spatial and temporal load shifting;
+      \item Analysis of \alert{net load migration} across locations;
+      \item Simulated \alert{energy balances} for selected datacenters.
+      \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Take aways}
+
+There are \alert{three signals} companies can factor into their procurement \& load shaping strategies for 24/7 CFE matching: \\
+\vspace{0.1cm}
+  -- quality of local renewable resources;\\
+  -- low correlation of wind power generation over long distances;\\
+  -- time lag in solar radiation peaks due to Earth's rotation.\\
+
+\vspace{0.5cm}
+
+Overall, space-time load-shifting flexibility: \\
+\vspace{0.1cm}
+  -- enables \alert{better access to clean electricity} and creates \alert{more options} for consumers to match demand with carbon-free electricity around-the-clock; \\
+  -- \alert{lowers the costs} of 24/7 CFE matching and makes it \alert{more attractive} to a wider range of companies.\\
+
+    
+\end{frame}
+
+
+%----------------------------------------
+%----------------------------------------
+
+\begin{frame}\frametitle{\quad}
+
+  {\Large
+  \alert{Contacts, Resources, Acknowledgements}
+  }
+
+  \vspace{0.1cm}
+    
+  {\bf References:}
+  \hrefc{https://iopscience.iop.org/article/10.1088/1748-9326/ad2239}{Temporal regulation of renewable supply for electrolytic hydrogen (2023)}\\
+  {\bf References:} \hrefc{https://irieo.github.io/247cfe.github.io/}{More about the 24/7 CFE research project (2022-2024)}
+
+  {\bf Code:} This work done in a spirit of open and reproducible research: \\
+  \faUnlock~code:
+  \hrefc{https://github.com/PyPSA/247-cfe}{github.com/PyPSA/247-cfe} \\
+  \faUnlock~code: \hrefc{https://zenodo.org/records/8324521}{https://zenodo.org/records/8324521}
+  
+  \vspace{.1cm}
+  {\bf Copyright:} Unless otherwise stated, graphics and text are Copyright \copyright E.Z. and I.R. 2024. \\
+  This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0}.  {\footnotesize \ccby} 
+
+  \vspace{.1cm}
+  {\bf Send an email:} \\
+  Dr. Elisabeth Zeyen, e.zeyen@tu-berlin.de\\
+  Dr. Iegor Riepin, iegor.riepin@tu-berlin.de \\
+  
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
