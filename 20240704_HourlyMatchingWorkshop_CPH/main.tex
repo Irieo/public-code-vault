@@ -2,7 +2,7 @@
 
 \input{backmatter.tex}
 
-\title{Insights from model based studies \\ on 24/7 CFE and green hydrogen regulation}
+\title{Insights from model based studies \\ on 24/7 CFE procurement and green hydrogen regulation}
 
 %\subtitle{---}
 \author{
@@ -128,6 +128,7 @@ myframe number]
 		\end{column}
 	\end{columns}
 \end{frame}
+
 \section{Temporal Regulation Green Hydrogen}
 \begin{frame}[noframenumbering, plain]
 	
@@ -136,6 +137,7 @@ myframe number]
 	\end{figure}
 	
 \end{frame}
+
 \begin{frame}{Motivation - The Urgency of Green Hydrogen Standards}
 	%	\alert{Background}: Green hydrogen can be used in sectors which are hard to decarbonise.  Thus, there's a need for clear standards defining 'green' hydrogen. \\
 	\alert{Challenge}: Rapid scale up of affordable green hydrogen production without emissions increases. \\
@@ -286,69 +288,88 @@ myframe number]
 	\end{itemize}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{24/7 Carbon-Free Electricity}
-% New study released: here we explore the value of demand flexibility for 24/7 CFE
-\begin{frame}{New study: The value of space-time load-shifting flexibility \\ 
-  for 24/7 carbon-free electricity procurement (July 2023)}
-  
-    {\small
-    \begin{columns}
-    \begin{column}{9cm}
-    \includegraphics[width=10cm]{images/spatial-temporal-vlinks-cropped.png}
-    \end{column}
-  
-    \begin{column}{6cm}
-  
-    \begin{itemize}
-      \vspace{-0.2cm}
-       \item Key focuses: \\
-     -- How can demand flexibility reduce the required \alert{resources} and \alert{costs} of 24/7~CFE matching?\\ 
-     \vspace{0.1cm}
-     -- What are the \alert{signals} for optimal utilisation of demand flexibility?\\
-     \vspace{0.1cm}
-     -- What are the trade-offs and synergies from co-optimisation of \alert{spatial} and \alert{temporal} load shifting?
-  
-     \item Open-access research: \\
-     \vspace{0.2cm}
-     {\footnotesize
-     \faUnlock~study:
-     \hrefc{https://zenodo.org/records/8185850}{zenodo.org/records/8185850}\\
-     \faUnlock~code:
-     \hrefc{https://github.com/PyPSA/247-cfe}{github.com/PyPSA/247-cfe}\\
-     }
 
-     \item  A follow-up research paper to be released in March 2024.
+
+\begin{frame}{Spatio-temporal load shifting for truly clean computing}, 
   
-    \end{itemize}
-    \end{column}
-    \end{columns}
-    }
-  \end{frame}
-  
-  
-  % Brief overview of the study design
-  \begin{frame}{Methods and study design}
-  
-    {\footnotesize
-    \begin{columns}
-    \begin{column}{9cm}
-    \includegraphics[width=10cm]{images/spatial-temporal-vlinks-cropped.png}
-    \end{column}
-  
-    \begin{column}{6cm}
-      \begin{itemize}
-        \vspace{-0.1cm}
-        \item The study is done with \alert{PyPSA} -- an open-source framework for modelling modern energy systems.
-        \item Model scope: \alert{\href{https://www.entsoe.eu/data/map/}{ENTSO-E area}} power system clustered to individual bidding zones, \alert{hourly} temporal resolution. 
-        \item Geographically scattered datacenters that are managed collectively. An operating company follows \alert{24/7 CFE strategy} in all locations.
-        \item \alert{Spatial} and \alert{temporal} load shifting mechamisms.
-        \item \alert{\enquote{Flexible workloads}}, i.e. electricity loads that can potentially be shifted in space or in time, are assumed to be in a range of {\{0\% .. 40\%\}}.
-      \end{itemize}
-      \end{column}
-      \end{columns}
-    }
+
+	\begin{columns}[T]
+		\begin{column}{10cm}
+
+		\includegraphics[width=10cm]{images/spatial-temporal-vlinks-cropped.png}
+
+	  \end{column}
+	  \begin{column}{4cm}
+			
+		Iegor Riepin \\
+		Tom Brown \\
+		Victor M. Zavala \\
+
+	 \hrefc{https://arxiv.org/abs/2405.00036}{Working paper (2024)} \\
+	 \hrefc{https://github.com/Irieo/space-time-optimization}{Code}
+
+		\source{Riepin, Brown \& Zavala (2024)}
+
+	  \end{column}
+	\end{columns}
 \end{frame}
   
+
+\begin{frame}
+  \frametitle{Research on datacenter load flexibility}
+
+  % First image in the top left corner
+  \begin{textblock*}{0.4\textwidth}(0cm,1cm)
+    \includegraphics[width=9cm]{images/lindberg-paper.png}
+  \end{textblock*}
+
+  % Second image, appearing lower and to the right
+  \begin{textblock*}{0.4\textwidth}(6cm,4cm) %
+    \includegraphics[width=9cm]{images/Zheng-paper.png}
+  \end{textblock*}
+
+  \source{
+    Lindberg et al. (2022): \hrefc{https://doi.org/10.1016/j.epsr.2022.108586}{doi.org/10.1016/j.epsr.2022.108586}, \\
+    Zheng et al. (2020): \hrefc{https://doi.org/10.1016/j.joule.2020.08.001}{doi.org/10.1016/j.joule.2020.08.001}
+  }
+
+\end{frame}
+
+
+\begin{frame}{Market data and forecasts}
+
+    \centering
+    \includegraphics[width=10.5cm]{images/electricity-maps.png}
+
+    \source{
+      Carbon intensity of electricity consumed\\
+      Source: \hrefc{https://app.electricitymaps.com/map}{electricitymaps.com/map}
+      }
+
+\end{frame}
+
+
+% Data centers work on technical solutions
+\begin{frame}{ICT companies work on concepts and technical solutions}
+
+  \begin{columns}[T]
+    \begin{column}{8cm}
+    \includegraphics[width=9.1cm]{images/Radovanovic_blog.png}
+  \end{column}
+
+  \begin{column}{7cm}
+    \includegraphics[width=7cm]{images/Koningstein_blog.png}
+    \source{
+      Sources: \\
+      \hrefc{https://blog.google/inside-google/infrastructure/data-centers-work-harder-sun-shines-wind-blows/}{blog.google/data-centers-work-harder-sun-shines-wind-blows} \\
+      \hrefc{https://blog.google/outreach-initiatives/sustainability/carbon-aware-computing-location/}{blog.google/carbon-aware-computing-location}}
+\end{column}
+
+\end{columns}
+\end{frame}
+
 
 \begin{frame}{Signal 1: quality of local renewable resouces}
 
@@ -358,6 +379,13 @@ myframe number]
 
 \end{frame}
 
+
+\begin{frame}{Time-series of optimized spatial load shifts}
+	\centering
+	\vspace{0.5cm}
+	\includegraphics[width=14cm]{images/results-3.png}
+	\includegraphics[width=13.5cm]{images/results-9c.png}
+  \end{frame}
 
 \begin{frame}{Signal 2: low correlation of wind power generation over long distances}
   \centering
@@ -394,37 +422,74 @@ myframe number]
 \end{frame}
 
 
-
-\begin{frame}{Also in the study}
+\begin{frame}{Time-series of optimized spatial load shifts (locations: DK-PT-GR)}
+	\centering
   
-      \begin{itemize}
-      \item Scenarios for \alert{co-optimised} and \alert{isolated} utilisation of space-time load-shifting;
-      \item Scenarios for 24/7 CFE with \alert{98\% and 100\%} matching targets;
-      \item Scenarios with different \alert{24/7 technology options} (e.g., Long Duration Energy Storage);
-      \item 24/7 CFE \alert{cost breakdowns} and \alert{procurement strategies} for individual locations;
-      \item \alert{Synergies} and \alert{trade-offs} between spatial and temporal load shifting;
-      \item Analysis of \alert{net load migration} across locations;
-      \item Simulated \alert{energy balances} for selected datacenters.
-      \end{itemize}
+	\begin{columns}
+	\begin{column}{7cm}
+	\includegraphics[width=7cm]{images/results-9d.png}
+	\end{column}
+  
+	\begin{column}{8cm}
+	  \vspace{0.3cm}
+	  \includegraphics[width=8cm]{images/results-9a.png}
+	  \includegraphics[width=8cm]{images/results-9b.png}
+	  \includegraphics[width=8cm]{images/results-9c.png}
+	  \end{column}
+	  \end{columns}
+  
+  \end{frame}
+  
+  
+%   \begin{frame}{Results can be generalized beyond specific load locations}
+% 	\centering
+% 	\includegraphics[width=13cm]{images/flexibility_vs_normalized_costs.pdf}
+%   \end{frame}
+  
+
+\begin{frame}{More insights in the published works}
+
+\enquote{Spatio-temporal load shifting for truly clean computing} (Mar 2024): \\
+paper: \hrefc{https://arxiv.org/abs/2405.00036}{https://arxiv.org/abs/2405.00036} \\
+code: \hrefc{https://github.com/Irieo/space-time-optimization}{https://github.com/Irieo/space-time-optimization}
+
+\enquote{The value of space-time load-shifting flexibility for 24/7 CFE procurement} (July 2023): \\
+study: \hrefc{https://zenodo.org/records/8185850}{https://zenodo.org/records/8185850}\\
+code: \hrefc{https://github.com/PyPSA/247-cfe/tree/v0.3}{https://github.com/PyPSA/247-cfe/tree/v0.3}
+
+      -- Results for \alert{co-optimised} and \alert{isolated} utilisation of space-time load-shifting \\
+      -- Results for \alert{different matching targets}\\
+      -- Results for advanced \alert{technology options} (e.g., Long Duration Energy Storage)\\
+      -- 24/7 CFE \alert{cost breakdowns} and \alert{procurement strategies} for individual locations \\
+      -- \alert{Synergies} and \alert{trade-offs} between spatial and temporal load shifting \\
+	  -- Analysis of \alert{net load migration} across locations\\
+      -- The costs of 24/7 CFE are reduced by \alert{1.29$\pm$0.07~\euro/MWh} for every additional percentage of flexible load
 
 \end{frame}
 
-\begin{frame}{Take aways}
 
-There are \alert{three signals} companies can factor into their procurement \& load shaping strategies for 24/7 CFE matching: \\
-\vspace{0.1cm}
-  -- quality of local renewable resources;\\
-  -- low correlation of wind power generation over long distances;\\
-  -- time lag in solar radiation peaks due to Earth's rotation.\\
+\begin{frame}{On hourly matching, grid signals and load flexibility \\ Fraction of hourly demand met by CFE}
 
-\vspace{0.5cm}
-
-Overall, space-time load-shifting flexibility: \\
-\vspace{0.1cm}
-  -- enables \alert{better access to clean electricity} and creates \alert{more options} for consumers to match demand with carbon-free electricity around-the-clock; \\
-  -- \alert{lowers the costs} of 24/7 CFE matching and makes it \alert{more attractive} to a wider range of companies.\\
-
-    
+	\vspace{0.3cm}
+	
+	\begin{columns}[T]
+	\begin{column}{9cm}
+	\centering
+	
+	\includegraphics[width=9.4cm]{images/10-2030-IE-p1-used.pdf}
+	\end{column}
+	\begin{column}{5cm}
+	
+		\begin{itemize}
+			\item Modelled region: \alert{Ireland 2030} 
+			\item \alert{72\%}---average CFE score in the background grid
+			\item CFE score above this treshold requires contracting \alert{own CFE resources}
+			\item 24/7 CFE buyer \alert{relies more on directly contracted resources as target CFE score tightens}
+			\end{itemize}
+	\end{column}
+	\end{columns}
+	
+	\source{Riepin and Brown (2023): https://zenodo.org/records/10407831}
 \end{frame}
 
 
